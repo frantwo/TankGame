@@ -1,0 +1,33 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 2rem;
+}
+
+button {
+    font-size: 2rem;
+    background-color: red;
+    border: 1px solid black;
+    margin: 1rem;
+}
+
+
+/* 1024x600px */
+
+canvas {
+    width: 102.4rem;
+    height: 60rem;
+    border: 1px solid black;
+    margin: 3rem;
+}
