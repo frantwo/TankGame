@@ -22,6 +22,30 @@ button {
     margin: 1rem;
 }
 
+#scores,
+#points {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 102.4rem;
+    font-size: 2.5rem;
+}
+
+#score_player_A,
+#score_player_B {
+    width: 20rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#points_player_A,
+#points_player_B {
+    width: 20rem;
+    text-align: center;
+    border: 1px solid black;
+}
+
 
 /* 1024x600px */
 
