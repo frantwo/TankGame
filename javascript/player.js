@@ -1,5 +1,5 @@
 class Player {
-    constructor(w, h, ctx, keys) {
+    constructor(w, h, ctx, keys, game) {
         this.id = 0;
         this.canvasW = w;
         this.canvasH = h;
@@ -7,6 +7,7 @@ class Player {
         this.keys = keys;
         this.x = 100;
         this.y = 0;
+        this.game = game;
 
         this.gun = new Gun(this.x, this.y, this.img, this.ctx, this);
 
@@ -60,7 +61,7 @@ class Player {
                     this.gun.rotateGunDown();
                     break;
                 case 32:
-                    this.shoot();
+                    this.gun.shoot();
                     break;
             }
         };

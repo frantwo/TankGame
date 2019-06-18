@@ -14,6 +14,8 @@ var Game = {
     turn: 0,
     background: undefined,
     player: undefined,
+    windAngle: Math.round(Math.random() * 360),
+    windSpeed: Math.round(Math.random() * 5),
 
     init: function(canvasId) {
         this.canvas = document.getElementById(canvasId);
@@ -50,7 +52,8 @@ var Game = {
             this.canvas.width,
             this.canvas.height,
             this.ctx,
-            this.keys
+            this.keys,
+            this
         );
         this.framesCounter = 0;
     },
