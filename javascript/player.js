@@ -51,18 +51,15 @@ class Player {
             height: 28
         };
 
-        this.setListeners();
-    }
-
-    setListeners() {
-        document.onkeydown = function(event) {
+        document.onkeydown = event => {
             switch (event.keyCode) {
                 case this.keys.TOP_KEY:
+                    this.gun.rotateGunUp();
                     break;
                 case this.keys.DOWN_KEY:
+                    this.gun.rotateGunDown();
                     break;
-
-                case this.keys.SPACE:
+                case 32:
                     this.shoot();
                     break;
             }

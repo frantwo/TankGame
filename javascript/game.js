@@ -35,11 +35,6 @@ var Game = {
             if (this.framesCounter > 1000) {
                 this.framesCounter = 0;
             }
-
-            //solo para pruebas
-            if (this.framesCounter == 5) this.stop();
-
-            // this.moveAll();
             this.drawAll();
         }, 1000 / this.fps);
     },
