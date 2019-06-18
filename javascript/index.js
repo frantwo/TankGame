@@ -1,4 +1,3 @@
 window.onload = function() {
-    let game = new Game
-    game.init("canvas");
+    Game.init("canvas");
 };
