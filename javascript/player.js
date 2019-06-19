@@ -8,11 +8,9 @@ class Player {
         this.x = 100;
         this.y = 0;
         this.game = game;
+        this.img = game.img;
 
         this.gun = new Gun(this.x, this.y, this.img, this.ctx, this);
-
-        this.img = new Image();
-        this.img.src = "./images/canon.png";
 
         // número de imágenes diferentes
         //sprites será igual que frames
@@ -82,11 +80,10 @@ class Player {
     }`;
     }
 
-    draw(framesCounter) {
+    draw() {
         this.drawBackBase();
         this.gun.draw();
         this.drawFrontBase();
-        // this.animateImg(framesCounter);
     }
 
     drawBackBase() {
@@ -115,14 +112,4 @@ class Player {
             this.base.height
         );
     }
-
-    // animateImg(framesCounter) {
-    //     // se va cambiando el frame. Cuanto mayor es el módulo, mas lento se mueve el personaje
-    //     if (framesCounter % 6 === 0) {
-    //         this.img.frameIndex += 1;
-
-    //         // Si el frame es el último, se vuelve al primero
-    //         if (this.img.frameIndex > 2) this.img.frameIndex = 0;
-    //     }
-    // }
 }

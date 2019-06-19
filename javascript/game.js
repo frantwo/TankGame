@@ -16,6 +16,8 @@ var Game = {
     player: undefined,
     windAngle: Math.round(Math.random() * 360),
     windSpeed: Math.round(Math.random() * 5),
+    img: undefined,
+    backgroundImg: undefined,
 
     init: function(canvasId) {
         /** @type HTMLCanvasElement */
@@ -25,7 +27,15 @@ var Game = {
         this.canvas.width = this.canvasWidth;
         this.canvas.height = this.canvasHeight;
 
-        this.start();
+        this.img = new Image();
+        this.img.src = "./images/canon.png";
+        this.backgroundImg = new Image();
+        this.backgroundImg.src = "./images/background.png";
+        this.img.onload = () => {
+            this.backgroundImg.onload = () => {
+                this.start();
+            };
+        };
     },
 
     start: function(canvasId) {
@@ -76,7 +86,8 @@ var Game = {
         this.background = new Background(
             this.canvas.width,
             this.canvas.height,
-            this.ctx
+            this.ctx,
+            this.backgroundImg
         );
         this.player = new Player(
             this.canvas.width,

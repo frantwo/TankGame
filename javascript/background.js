@@ -1,9 +1,8 @@
 //esta función mantiene el fondo del juego
 class Background {
-    constructor(w, h, ctx) {
+    constructor(w, h, ctx, backgroundImg) {
         this.ctx = ctx;
-        this.img = new Image();
-        this.img.src = "./images/background.png";
+        this.img = backgroundImg;
         this.h = h;
         this.w = w;
 
