@@ -63,6 +63,14 @@ h3 {
     border: 1px solid black;
 }
 
+.turnOn {
+    background-color: red;
+}
+
+.turnOff {
+    background-color: white;
+}
+
 
 /* 1024x600px */
 

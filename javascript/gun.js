@@ -2,7 +2,7 @@ class Gun {
     constructor(x, y, img, ctx, player) {
         this.x = x;
         this.y = y;
-        this.angle = 0;
+        this.angle = (player.id == 1) ? 0 : -180;
         this.img = img;
         this.ctx = ctx;
         this.player = player;
@@ -26,24 +26,21 @@ class Gun {
     draw() {
         this.ctx.save();
         this.ctx.translate(
-            this.x + 18,
+            this.x + (this.player.id == 1 ? 18 : -18),
             this.player.canvasH - this.player.base.height / 2
         );
         this.ctx.rotate((this.angle * Math.PI) / 180);
 
+
         this.ctx.drawImage(
             this.player.img,
             0,
-            this.player.spritesIndex.emptyCanon +
-            (this.player.id == 1 ?
-                this.player.playerLeft :
-                this.player.playerRight) *
-            this.player.frameHeight,
+            (this.player.spritesIndex.emptyCanon + (this.player.id == 1 ? this.player.playerLeft : this.player.playerRight)) * this.player.frameHeight,
             this.player.canon.width,
-            this.player.canon.height,
+            this.player.frameHeight,
             0, -this.player.base.height / 2,
             this.player.canon.width,
-            this.player.canon.height
+            this.player.frameHeight
         );
         this.ctx.restore();
     }

@@ -15,10 +15,12 @@ var Game = {
     background: undefined,
     playerOne: undefined,
     playerTwo: undefined,
+    currentPlayer: undefined,
     windAngle: Math.round(Math.random() * 360),
     windSpeed: Math.round(Math.random() * 5),
     img: undefined,
     backgroundImg: undefined,
+    turnPlayer: 1,
 
     init: function(canvasId) {
         /** @type HTMLCanvasElement */
@@ -50,6 +52,11 @@ var Game = {
             // controlamos que frameCounter no sea superior a 1000
             if (this.framesCounter > 1000) {
                 this.framesCounter = 0;
+            }
+            if (this.turnPlayer == this.playerOne.id) {
+                this.currentPlayer = this.playerOne
+            } else {
+                this.currentPlayer = this.playerTwo
             }
             this.drawAll();
 
@@ -101,19 +108,30 @@ var Game = {
             this.keys,
             this
         );
-        this.playerTwo = new Player(
-            this.canvasWidth - 100,
-            0,
-            2,
-            this.canvas.width,
-            this.canvas.height,
-            this.ctx,
-            this.keys,
-            this
-        );
+        // this.playerTwo = new Player(
+        //     this.canvasWidth - 100,
+        //     0,
+        //     2,
+        //     this.canvas.width,
+        //     this.canvas.height,
+        //     this.ctx,
+        //     this.keys,
+        //     this
+        // );
         this.framesCounter = 0;
         document.querySelector("#angle").innerHTML = "Angle: 0";
         document.querySelector("#powergun").innerHTML = "Power: 0";
+        if (this.turnPlayer == 1) {
+            document.querySelector("#points_player_A").innerHTML = "FIRE!";
+            document.querySelector("#points_player_A").classList.replace(".turnOff", ".TurnOn");
+            document.querySelector("#points_player_B").innerHTML = "PRAY...";
+            document.querySelector("#points_player_B").classList.replace(".turnOn", ".TurnOff");
+        } else {
+            document.querySelector("#points_player_A").innerHTML = "PRAY...";
+            document.querySelector("#points_player_A").classList.replace(".turnOn", ".TurnOff");
+            document.querySelector("#points_player_B").innerHTML = "FIRE!";
+            document.querySelector("#points_player_B").classList.replace(".turnOff", ".TurnOn");
+        }
     },
 
     //limpieza de la pantalla
@@ -125,11 +143,14 @@ var Game = {
         clearInterval(this.interval);
     },
 
+    changeTurn: function() {
+
+    },
+
     //fin del juego
     gameOver: function() {
         this.stop();
         if (confirm("GAME OVER. Play again?")) {
-            this.reset();
             this.start();
         }
     },
@@ -137,7 +158,6 @@ var Game = {
     //dibuja todos los assets del juego
     drawAll: function() {
         this.background.draw();
-        this.playerOne.draw(this.framesCounter);
-        this.playerTwo.draw(this.framesCounter);
+        this.currentPlayer.draw(this.framesCounter);
     }
 };

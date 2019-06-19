@@ -1,6 +1,6 @@
 class Player {
     constructor(x, y, id, w, h, ctx, keys, game) {
-        this.id = 0;
+        this.id = id;
         this.canvasW = w;
         this.canvasH = h;
         this.ctx = ctx;
@@ -34,7 +34,7 @@ class Player {
         this.frames = 1;
         this.frameIndex = 10;
         this.frameHeight = 24;
-        this.playerLeft = 1;
+        this.playerLeft = 0;
         this.playerRight = 5;
 
         // medidas los sprites a representar en el canvas
@@ -52,24 +52,28 @@ class Player {
         };
 
         document.onkeydown = event => {
-            switch (event.keyCode) {
-                case this.keys.TOP_KEY:
-                    this.gun.rotateGunUp();
-                    break;
-                case this.keys.DOWN_KEY:
-                    this.gun.rotateGunDown();
-                    break;
-                case this.keys.SPACE:
-                    this.powerLoad();
-                    break;
+            if (this.game.turnPlayer == this.id) {
+                switch (event.keyCode) {
+                    case this.keys.TOP_KEY:
+                        this.gun.rotateGunUp();
+                        break;
+                    case this.keys.DOWN_KEY:
+                        this.gun.rotateGunDown();
+                        break;
+                    case this.keys.SPACE:
+                        this.powerLoad();
+                        break;
+                }
             }
         };
 
         document.onkeyup = event => {
-            switch (event.keyCode) {
-                case this.keys.SPACE:
-                    this.gun.shoot();
-                    break;
+            if (this.game.turnPlayer == this.id) {
+                switch (event.keyCode) {
+                    case this.keys.SPACE:
+                        this.gun.shoot();
+                        break;
+                }
             }
         };
     }
@@ -95,7 +99,7 @@ class Player {
             (this.id == 1 ? this.playerLeft : this.playerRight) * this.frameHeight,
             this.base.width,
             this.base.height,
-            this.x + 8,
+            (this.id == 1 ? this.x + 8 : this.x - 8),
             this.canvasH - this.base.height,
             this.base.width,
             this.base.height
