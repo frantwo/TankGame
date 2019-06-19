@@ -76,7 +76,7 @@ class Player {
     }
 
     powerLoad() {
-        this.gun.powerGun += 10;
+        this.gun.powerGun += 15;
         document.querySelector("#powergun").innerHTML = `Power: ${
       this.gun.powerGun
     }`;

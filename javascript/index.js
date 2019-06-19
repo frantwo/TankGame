@@ -1,3 +1,5 @@
 window.onload = function() {
-    Game.init("canvas");
+    document.getElementById("startGame").onclick = () => {
+        Game.init("canvas");
+    };
 };

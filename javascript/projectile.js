@@ -95,10 +95,11 @@ class Projectile {
 
         // console.log(`x = ${this.x}, y = ${this.y}
         // canvasWidth = ${this.canvasWidth}, ${this.canvasHeight}`);
+
         return (
             this.x > this.game.canvasWidth ||
             this.x < -1000 ||
-            this.y > this.gun.player.projectile.height * 2
+            this.y > this.gun.player.projectile.height
         );
     }
 
