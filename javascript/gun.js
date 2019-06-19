@@ -6,18 +6,21 @@ class Gun {
         this.img = img;
         this.ctx = ctx;
         this.player = player;
+        this.powerGun = 0;
     }
 
     rotateGunUp() {
         if (Math.abs(this.angle) != 180) {
             this.angle -= 10;
         }
+        document.querySelector("#angle").innerHTML = "Angle:" + this.angle;
     }
 
     rotateGunDown() {
         if (this.angle != 0) {
             this.angle += 10;
         }
+        document.querySelector("#angle").innerHTML = "Angle:" + this.angle;
     }
 
     draw() {
@@ -44,9 +47,12 @@ class Gun {
     }
 
     shoot() {
-        var angle = this.angle;
-        this.angle = 0;
-        var projectile = new Projectile(angle, 15, this);
+        //por si queremos devolver el cañon a su posición original
+        //var angle = this.angle;
+        //this.angle = 0;
+        // var projectile = new Projectile(angle, 15, this);
+
+        var projectile = new Projectile(Math.abs(this.angle), 15, this);
         projectile.fire();
     }
 }

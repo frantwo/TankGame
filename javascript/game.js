@@ -18,13 +18,26 @@ var Game = {
     windSpeed: Math.round(Math.random() * 5),
 
     init: function(canvasId) {
+        /** @type HTMLCanvasElement */
         this.canvas = document.getElementById(canvasId);
+        /** @type CanvasRenderingContext2D */
         this.ctx = this.canvas.getContext("2d");
         this.canvas.width = this.canvasWidth;
         this.canvas.height = this.canvasHeight;
 
+        // this.canvas.addEventListener("mousemove", e => {
+        //     this.getCursorPosition(canvas, e);
+        // });
+
         this.start();
     },
+
+    // getCursorPosition: (canvas, event) => {
+    //     const rect = canvas.getBoundingClientRect();
+    //     const x = event.clientX - rect.left;
+    //     const y = event.clientY - rect.top;
+    //     console.log("x: " + x + " y: " + y);
+    // },
 
     start: function(canvasId) {
         this.fps = 60;
@@ -38,6 +51,34 @@ var Game = {
                 this.framesCounter = 0;
             }
             this.drawAll();
+
+            //x=0 y= positiva
+            this.ctx.fillStyle = "blue";
+            this.ctx.beginPath();
+            this.ctx.rect(100, 100, 5, -100);
+            this.ctx.closePath();
+            this.ctx.fill();
+
+            //x=positiva y = 0
+            this.ctx.fillStyle = "white";
+            this.ctx.beginPath();
+            this.ctx.rect(100, 100, 100, 5);
+            this.ctx.closePath();
+            this.ctx.fill();
+
+            //x=0 y=negativa
+            this.ctx.fillStyle = "red";
+            this.ctx.beginPath();
+            this.ctx.rect(100, 100, 5, 100);
+            this.ctx.closePath();
+            this.ctx.fill();
+
+            //x=negativa y = 0
+            this.ctx.fillStyle = "yellow";
+            this.ctx.beginPath();
+            this.ctx.rect(100, 100, -100, 5);
+            this.ctx.closePath();
+            this.ctx.fill();
         }, 1000 / this.fps);
     },
 
@@ -56,6 +97,8 @@ var Game = {
             this
         );
         this.framesCounter = 0;
+        document.querySelector("#angle").innerHTML = "Angle: 0";
+        document.querySelector("#powergun").innerHTML = "Power: 0";
     },
 
     //limpieza de la pantalla

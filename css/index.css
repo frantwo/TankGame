@@ -40,7 +40,8 @@ button {
 }
 
 #points_player_A,
-#points_player_B {
+#points_player_B,
+h3 {
     width: 20rem;
     text-align: center;
     border: 1px solid black;

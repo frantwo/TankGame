@@ -60,11 +60,26 @@ class Player {
                 case this.keys.DOWN_KEY:
                     this.gun.rotateGunDown();
                     break;
-                case 32:
+                case this.keys.SPACE:
+                    this.powerLoad();
+                    break;
+            }
+        };
+
+        document.onkeyup = event => {
+            switch (event.keyCode) {
+                case this.keys.SPACE:
                     this.gun.shoot();
                     break;
             }
         };
+    }
+
+    powerLoad() {
+        this.gun.powerGun += 10;
+        document.querySelector("#powergun").innerHTML = `Power: ${
+      this.gun.powerGun
+    }`;
     }
 
     draw(framesCounter) {
