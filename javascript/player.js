@@ -1,12 +1,13 @@
 class Player {
-    constructor(w, h, ctx, keys, game) {
+    constructor(x, y, id, w, h, ctx, keys, game) {
         this.id = 0;
         this.canvasW = w;
         this.canvasH = h;
         this.ctx = ctx;
         this.keys = keys;
-        this.x = 100;
-        this.y = 0;
+        this.id = id;
+        this.x = x;
+        this.y = y;
         this.game = game;
         this.img = game.img;
 
@@ -90,7 +91,8 @@ class Player {
         this.ctx.drawImage(
             this.img,
             0,
-            this.spritesIndex.base * this.playerLeft * this.frameHeight,
+            this.spritesIndex.base +
+            (this.id == 1 ? this.playerLeft : this.playerRight) * this.frameHeight,
             this.base.width,
             this.base.height,
             this.x + 8,
@@ -103,7 +105,8 @@ class Player {
         this.ctx.drawImage(
             this.img,
             0,
-            this.spritesIndex.base * this.playerLeft * this.frameHeight,
+            this.spritesIndex.base +
+            (this.id == 1 ? this.playerLeft : this.playerRight) * this.frameHeight,
             this.base.width,
             this.base.height,
             this.x,

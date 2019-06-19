@@ -13,7 +13,8 @@ var Game = {
 
     turn: 0,
     background: undefined,
-    player: undefined,
+    playerOne: undefined,
+    playerTwo: undefined,
     windAngle: Math.round(Math.random() * 360),
     windSpeed: Math.round(Math.random() * 5),
     img: undefined,
@@ -27,6 +28,7 @@ var Game = {
         this.canvas.width = this.canvasWidth;
         this.canvas.height = this.canvasHeight;
 
+        //cargo todas las imágenes al inicio para no sobre cargar el navegador
         this.img = new Image();
         this.img.src = "./images/canon.png";
         this.backgroundImg = new Image();
@@ -89,7 +91,20 @@ var Game = {
             this.ctx,
             this.backgroundImg
         );
-        this.player = new Player(
+        this.playerOne = new Player(
+            100,
+            0,
+            1,
+            this.canvas.width,
+            this.canvas.height,
+            this.ctx,
+            this.keys,
+            this
+        );
+        this.playerTwo = new Player(
+            this.canvasWidth - 100,
+            0,
+            2,
             this.canvas.width,
             this.canvas.height,
             this.ctx,
@@ -122,6 +137,7 @@ var Game = {
     //dibuja todos los assets del juego
     drawAll: function() {
         this.background.draw();
-        this.player.draw(this.framesCounter);
+        this.playerOne.draw(this.framesCounter);
+        this.playerTwo.draw(this.framesCounter);
     }
 };

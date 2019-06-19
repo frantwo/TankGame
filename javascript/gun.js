@@ -34,8 +34,10 @@ class Gun {
         this.ctx.drawImage(
             this.player.img,
             0,
-            this.player.spritesIndex.emptyCanon *
-            this.player.playerLeft *
+            this.player.spritesIndex.emptyCanon +
+            (this.player.id == 1 ?
+                this.player.playerLeft :
+                this.player.playerRight) *
             this.player.frameHeight,
             this.player.canon.width,
             this.player.canon.height,

@@ -20,7 +20,6 @@ class Projectile {
         this.angle = angle;
         this.xMax = Math.cos(this.angle) * this.gun.powerGun;
         this.yMax = Math.sin(this.angle) * this.gun.powerGun;
-        debugger;
     }
 
     updateProjectile() {
@@ -39,7 +38,6 @@ class Projectile {
         } else {
             this.y += 10;
         }
-        debugger;
     }
 
     draw() {
