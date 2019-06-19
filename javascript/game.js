@@ -34,7 +34,7 @@ var Game = {
         this.img = new Image();
         this.img.src = "./images/canon.png";
         this.backgroundImg = new Image();
-        this.backgroundImg.src = "./images/background.png";
+        this.backgroundImg.src = "./images/paisaje02.jpg";
         this.img.onload = () => {
             this.backgroundImg.onload = () => {
                 this.start();
