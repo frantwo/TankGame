@@ -31,8 +31,9 @@ class Projectile {
         // console.log(`y = ${this.y}`);
 
         //USANDO JUGADOR DE LA IZQ!!!
+
         this.x += 10;
-        if (this.x <= this.xMax && this.y >= this.yMax) {
+        if (this.x <= this.xMax) {
             this.y -= 10;
         } else {
             this.y += 10;
