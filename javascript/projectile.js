@@ -51,7 +51,7 @@ class Projectile {
         this.ctx.arc(
             this.x,
             this.y,
-            this.gun.player.projectile.height / 2,
+            this.gun.player.projectile.height / 4,
             2 * Math.PI,
             false
         );
