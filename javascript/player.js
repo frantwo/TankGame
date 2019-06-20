@@ -99,7 +99,7 @@ class Player {
             (this.id == 1 ? this.playerLeft : this.playerRight) * this.frameHeight,
             this.base.width,
             this.base.height,
-            (this.id == 1 ? this.x + 8 : this.x - 8),
+            this.id == 1 ? this.x + 8 : this.x - 8,
             this.canvasH - this.base.height,
             this.base.width,
             this.base.height
