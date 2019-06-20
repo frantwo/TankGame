@@ -12,15 +12,15 @@ class Projectile {
         // this.angle = (Math.PI * (90 - angle)) / 180;
         this.timeInAir = 0;
 
-        // this.windYVelocity =
-        //     Math.sin((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
-        // this.windXVelocity =
-        //     Math.cos((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
-        this.yVelocity = Math.sin(this.angle) * velocity; //+ this.windYVelocity;
-        this.xVelocity = Math.cos(this.angle) * velocity; //+ this.windXVelocity;
+        this.windYVelocity =
+            Math.sin((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
+        this.windXVelocity =
+            Math.cos((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
+        this.yVelocity = Math.sin(this.angle) * velocity + this.windYVelocity;
+        this.xVelocity = Math.cos(this.angle) * velocity + this.windXVelocity;
 
-        this.xMax = Math.cos(this.angle) * this.gun.powerGun;
-        this.yMax = Math.sin(this.angle) * this.gun.powerGun;
+        // this.xMax = Math.cos(this.angle) * this.gun.powerGun;
+        // this.yMax = Math.sin(this.angle) * this.gun.powerGun;
     }
 
     updateProjectile() {

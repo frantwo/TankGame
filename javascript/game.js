@@ -44,6 +44,9 @@ var Game = {
 
     start: function(canvasId) {
         this.fps = 60;
+        this.windAngle = Math.round(Math.random() * 360);
+        this.windSpeed = Math.round(Math.random() * 5);
+
         this.reset();
 
         this.interval = setInterval(() => {
@@ -54,9 +57,9 @@ var Game = {
                 this.framesCounter = 0;
             }
             if (this.turnPlayer == this.playerOne.id) {
-                this.currentPlayer = this.playerOne
+                this.currentPlayer = this.playerOne;
             } else {
-                this.currentPlayer = this.playerTwo
+                this.currentPlayer = this.playerTwo;
             }
             this.drawAll();
 
@@ -123,15 +126,26 @@ var Game = {
         document.querySelector("#powergun").innerHTML = "Power: 0";
         if (this.turnPlayer == 1) {
             document.querySelector("#points_player_A").innerHTML = "FIRE!";
-            document.querySelector("#points_player_A").classList.replace(".turnOff", ".TurnOn");
+            document
+                .querySelector("#points_player_A")
+                .classList.replace(".turnOff", ".TurnOn");
             document.querySelector("#points_player_B").innerHTML = "PRAY...";
-            document.querySelector("#points_player_B").classList.replace(".turnOn", ".TurnOff");
+            document
+                .querySelector("#points_player_B")
+                .classList.replace(".turnOn", ".TurnOff");
         } else {
             document.querySelector("#points_player_A").innerHTML = "PRAY...";
-            document.querySelector("#points_player_A").classList.replace(".turnOn", ".TurnOff");
+            document
+                .querySelector("#points_player_A")
+                .classList.replace(".turnOn", ".TurnOff");
             document.querySelector("#points_player_B").innerHTML = "FIRE!";
-            document.querySelector("#points_player_B").classList.replace(".turnOff", ".TurnOn");
+            document
+                .querySelector("#points_player_B")
+                .classList.replace(".turnOff", ".TurnOn");
         }
+        document.getElementById("wind").style.transform = `rotate(${
+      this.windAngle
+    }deg)`;
     },
 
     //limpieza de la pantalla
@@ -143,9 +157,7 @@ var Game = {
         clearInterval(this.interval);
     },
 
-    changeTurn: function() {
-
-    },
+    changeTurn: function() {},
 
     //fin del juego
     gameOver: function() {
