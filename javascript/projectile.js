@@ -3,41 +3,42 @@ class Projectile {
         this.ctx = gun.ctx;
         this.gun = gun;
         this.game = this.gun.player.game;
+        this.x = 0;
+        this.y = 0;
+        //this.angle = (Math.PI * (90 - angle)) / 180;
+        this.angle = (Math.PI * angle) / 180;
         // this.x = this.gun.x + 18;
         // this.y = this.gun.player.canvasH - this.gun.player.base.height / 2;
         // this.angle = (Math.PI * (90 - angle)) / 180;
-        // this.timeInAir = 0;
+        this.timeInAir = 0;
 
         // this.windYVelocity =
         //     Math.sin((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
         // this.windXVelocity =
         //     Math.cos((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
-        // this.yVelocity = Math.sin(this.angle) * velocity + this.windYVelocity;
-        // this.xVelocity = Math.cos(this.angle) * velocity + this.windXVelocity;
+        this.yVelocity = Math.sin(this.angle) * velocity; //+ this.windYVelocity;
+        this.xVelocity = Math.cos(this.angle) * velocity; //+ this.windXVelocity;
 
-        this.x = 0;
-        this.y = 0;
-        this.angle = (Math.PI * (90 - angle)) / 180;
         this.xMax = Math.cos(this.angle) * this.gun.powerGun;
         this.yMax = Math.sin(this.angle) * this.gun.powerGun;
     }
 
     updateProjectile() {
-        // var gravity = 15 * this.timeInAir;
-        // this.y += this.yVelocity - gravity;
-        // this.x += this.xVelocity;
+        var gravity = 9.8 * this.timeInAir;
+        this.y -= this.yVelocity - gravity;
+        this.x += this.xVelocity;
         // console.log("==============");
         // console.log(`x = ${this.x}`);
         // console.log(`y = ${this.y}`);
 
         //USANDO JUGADOR DE LA IZQ!!!
 
-        this.x += 10;
-        if (this.x <= this.xMax) {
-            this.y -= 10;
-        } else {
-            this.y += 10;
-        }
+        // this.x += 10;
+        // if (this.x <= this.xMax) {
+        //     this.y -= 10;
+        // } else {
+        //     this.y += 10;
+        // }
         console.log(`X: ${this.x}  Y:${this.y}`);
     }
 
@@ -85,9 +86,8 @@ class Projectile {
 
     checkCollision() {
         return (
-            this.x > this.game.canvasWidth ||
-            this.x < -1000 ||
-            this.y > this.gun.player.projectile.height
+            this.x > this.game.canvasWidth || this.x < -1000 || this.x > 1000 //||
+            // this.y > this.gun.player.projectile.height
         );
     }
 }
