@@ -193,9 +193,13 @@ var Game = {
         );
         this.currentPlayer = this.playerOne;
         this.framesCounter = 0;
+        this.drawScore();
+    },
+
+    drawScore: function() {
         document.querySelector("#angle").innerHTML = "Angle: 0";
         document.querySelector("#powergun").innerHTML = "Power: 0";
-        if (this.turnPlayer == 1) {
+        if (this.currentPlayer.id == 1) {
             document.querySelector("#points_player_A").innerHTML = "FIRE!";
             document
                 .querySelector("#points_player_A")
@@ -251,6 +255,7 @@ var Game = {
         } else {
             this.currentPlayer = this.playerOne;
         }
+        this.drawScore();
     },
 
     listener: function() {

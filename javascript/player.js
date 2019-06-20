@@ -51,8 +51,8 @@ class Player {
             height: 28
         };
 
-        this.width = this.canon.width;
-        this.height = this.base.height + this.canon.height;
+        this.width = this.base.width;
+        this.height = this.base.height;
     }
 
     powerLoad() {
