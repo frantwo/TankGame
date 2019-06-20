@@ -246,7 +246,6 @@ var Game = {
     },
 
     changePlayer: function() {
-        console.log("tpm");
         if (this.currentPlayer.id == this.playerOne.id) {
             this.currentPlayer = this.playerTwo;
         } else {
