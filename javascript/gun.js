@@ -7,20 +7,28 @@ class Gun {
         this.ctx = ctx;
         this.player = player;
         this.powerGun = 0;
+        this.keyStatus = {
+            up: false,
+            down: false
+        };
     }
 
     rotateGunUp() {
-        if (Math.abs(this.angle) != 180) {
-            this.angle -= 10;
+        if (this.keyStatus.up) {
+            if (Math.abs(this.angle) != 180) {
+                this.angle -= 1;
+            }
+            document.querySelector("#angle").innerHTML = "Angle:" + this.angle;
         }
-        document.querySelector("#angle").innerHTML = "Angle:" + this.angle;
     }
 
     rotateGunDown() {
-        if (this.angle != 0) {
-            this.angle += 10;
+        if (this.keyStatus.down) {
+            if (this.angle != 0) {
+                this.angle += 1;
+            }
+            document.querySelector("#angle").innerHTML = "Angle:" + this.angle;
         }
-        document.querySelector("#angle").innerHTML = "Angle:" + this.angle;
     }
 
     draw() {

@@ -39,7 +39,7 @@ class Projectile {
         // } else {
         //     this.y += 10;
         // }
-        console.log(`X: ${this.x}  Y:${this.y}`);
+        // console.log(`X: ${this.x}  Y:${this.y}`);
     }
 
     draw() {
@@ -75,7 +75,7 @@ class Projectile {
             //     } else {
             //         this.gun.tank.game.counter = 0;
             //     }
-            this.game.gameOver();
+            // this.game.gameOver();
         } else {
             this.updateProjectile();
             this.draw();

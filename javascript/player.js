@@ -1,16 +1,16 @@
 class Player {
-    constructor(x, y, id, w, h, ctx, keys, game) {
+    constructor(x, y, id, w, h, ctx, keys, game, direction) {
         this.id = id;
+        this.direction = direction;
         this.canvasW = w;
         this.canvasH = h;
         this.ctx = ctx;
         this.keys = keys;
-        this.id = id;
         this.x = x;
         this.y = y;
         this.game = game;
         this.img = game.img;
-
+        this.spaceStatus = false;
         this.gun = new Gun(this.x, this.y, this.img, this.ctx, this);
 
         // número de imágenes diferentes
@@ -50,39 +50,15 @@ class Player {
             width: 26,
             height: 28
         };
-
-        document.onkeydown = event => {
-            if (this.game.turnPlayer == this.id) {
-                switch (event.keyCode) {
-                    case this.keys.TOP_KEY:
-                        this.gun.rotateGunUp();
-                        break;
-                    case this.keys.DOWN_KEY:
-                        this.gun.rotateGunDown();
-                        break;
-                    case this.keys.SPACE:
-                        this.powerLoad();
-                        break;
-                }
-            }
-        };
-
-        document.onkeyup = event => {
-            if (this.game.turnPlayer == this.id) {
-                switch (event.keyCode) {
-                    case this.keys.SPACE:
-                        this.gun.shoot();
-                        break;
-                }
-            }
-        };
     }
 
     powerLoad() {
-        this.gun.powerGun += 15;
-        document.querySelector("#powergun").innerHTML = `Power: ${
-      this.gun.powerGun
-    }`;
+        if (this.spaceStatus) {
+            this.gun.powerGun += 1;
+            document.querySelector("#powergun").innerHTML = `Power: ${
+        this.gun.powerGun
+      }`;
+        }
     }
 
     draw() {
