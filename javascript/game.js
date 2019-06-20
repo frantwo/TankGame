@@ -233,7 +233,7 @@ var Game = {
     //fin del juego
     gameOver: function() {
         this.stop();
-        if (confirm("GAME OVER. Play again?")) {
+        if (confirm("YOU WIN!! Play again?")) {
             this.start();
         }
     },

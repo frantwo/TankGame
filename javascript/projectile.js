@@ -75,7 +75,7 @@ class Projectile {
             //     } else {
             //         this.gun.tank.game.counter = 0;
             //     }
-            // this.game.gameOver();
+            this.game.gameOver();
         } else {
             this.updateProjectile();
             this.draw();
@@ -85,9 +85,64 @@ class Projectile {
     }
 
     checkCollision() {
-        return (
-            this.x > this.game.canvasWidth || this.x < -1000 || this.x > 1000 //||
-            // this.y > this.gun.player.projectile.height
-        );
+        if (this.x > this.game.canvasWidth || this.x < -1000 || this.x > 1000) {
+            return false;
+        } else {
+            // if (this.game.currentPlayer.id == 2) {
+            //     if (
+            //         this.game.currentPlayer.canon.width + this.game.currentPlayer.x >
+            //         this.x &&
+            //         this.x > this.game.currentPlayer.x &&
+            //         this.game.currentPlayer.y + this.game.currentPlayer.canon.height >
+            //         Math.abs(this.y) &&
+            //         Math.abs(this.y) > 0
+            //     ) {
+            //         return true;
+            //     } else {
+            //         return false;
+            //     }
+            // } else {
+            //     if (
+            //         this.game.currentPlayer.x + this.game.currentPlayer.canvasWidth >
+            //         this.game.canvasWidth - Math.abs(this.x) &&
+            //         this.game.canvasWidth - Math.abs(this.x) >
+            //         this.game.currentPlayer.x &&
+            //         this.game.currentPlayer.y + this.game.currentPlayer.canon.height >
+            //         Math.abs(this.y) &&
+            //         Math.abs(this.y) > 0
+            //     ) {
+            //         return true;
+            //     } else {
+            //         return false;
+            //     }
+            // }
+            if (this.game.currentPlayer.id == 2) {
+                if (
+                    this.x >= this.game.currentPlayer.x - this.game.currentPlayer.width &&
+                    this.x <= this.game.currentPlayer.x &&
+                    Math.abs(this.y) >= 0 &&
+                    Math.abs(this.y) <=
+                    this.game.currentPlayer.y + this.game.currentPlayer.height
+                ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                if (
+                    this.game.canvasWidth - Math.abs(this.x) <=
+                    this.game.currentPlayer.x + this.game.currentPlayer.width &&
+                    this.game.canvasWidth - Math.abs(this.x) >=
+                    this.game.currentPlayer.x &&
+                    Math.abs(this.y) >= 0 &&
+                    Math.abs(this.y) <=
+                    this.game.currentPlayer.y + this.game.currentPlayer.height
+                ) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
     }
 }
