@@ -17,7 +17,7 @@ class Projectile {
 
         this.x = 0;
         this.y = 0;
-        this.angle = angle;
+        this.angle = (Math.PI * (90 - angle)) / 180;
         this.xMax = Math.cos(this.angle) * this.gun.powerGun;
         this.yMax = Math.sin(this.angle) * this.gun.powerGun;
     }
@@ -38,6 +38,7 @@ class Projectile {
         } else {
             this.y += 10;
         }
+        console.log(`X: ${this.x}  Y:${this.y}`);
     }
 
     draw() {
