@@ -34,7 +34,7 @@ class Gun {
     draw() {
         this.ctx.save();
         this.ctx.translate(
-            this.x + (this.player.id == 1 ? 18 : -18),
+            this.x + 18,
             this.player.canvasH - this.player.base.height / 2
         );
         this.ctx.rotate((this.angle * Math.PI) / 180);

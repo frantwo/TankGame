@@ -24,12 +24,22 @@ var Game = {
     init: function(canvasId) {
         document.addEventListener("keydown", event => {
             event.preventDefault();
-            if (event.keyCode == this.keys.TOP_KEY) {
-                this.currentPlayer.gun.keyStatus.up = true;
+            if (this.currentPlayer.id === 1) {
+                if (event.keyCode == this.keys.TOP_KEY) {
+                    this.currentPlayer.gun.keyStatus.up = true;
+                }
+                if (event.keyCode == this.keys.DOWN_KEY) {
+                    this.currentPlayer.gun.keyStatus.down = true;
+                }
+            } else {
+                if (event.keyCode == this.keys.TOP_KEY) {
+                    this.currentPlayer.gun.keyStatus.up = !true;
+                }
+                if (event.keyCode == this.keys.DOWN_KEY) {
+                    this.currentPlayer.gun.keyStatus.down = !true;
+                }
             }
-            if (event.keyCode == this.keys.DOWN_KEY) {
-                this.currentPlayer.gun.keyStatus.down = true;
-            }
+
             if (event.keyCode == this.keys.SPACE) {
                 this.currentPlayer.spaceStatus = true;
             }
@@ -49,12 +59,22 @@ var Game = {
 
         document.addEventListener("keyup", event => {
             event.preventDefault();
-            if (event.keyCode == this.keys.TOP_KEY) {
-                this.currentPlayer.gun.keyStatus.up = false;
+            if (this.currentPlayer.id === 1) {
+                if (event.keyCode == this.keys.TOP_KEY) {
+                    this.currentPlayer.gun.keyStatus.up = false;
+                }
+                if (event.keyCode == this.keys.DOWN_KEY) {
+                    this.currentPlayer.gun.keyStatus.down = false;
+                }
+            } else {
+                if (event.keyCode == this.keys.TOP_KEY) {
+                    this.currentPlayer.gun.keyStatus.up = !false;
+                }
+                if (event.keyCode == this.keys.DOWN_KEY) {
+                    this.currentPlayer.gun.keyStatus.down = !false;
+                }
             }
-            if (event.keyCode == this.keys.DOWN_KEY) {
-                this.currentPlayer.gun.keyStatus.down = false;
-            }
+
             if (event.keyCode == this.keys.SPACE) {
                 this.currentPlayer.spaceStatus = false;
                 this.currentPlayer.gun.shoot();
