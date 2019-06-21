@@ -255,6 +255,7 @@ var Game = {
         } else {
             this.currentPlayer = this.playerOne;
         }
+        this.currentPlayer.gun.powerGun += 0;
         this.drawScore();
     },
 

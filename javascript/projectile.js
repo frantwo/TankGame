@@ -66,7 +66,7 @@ class Projectile {
     }
 
     bothMovement() {
-        if (this.checkCollision()) {
+        if (this.checkCollision() == "BOOM") {
             //     this.proj.remove();
             //     if (this.gun.tank.hp === 0) {
             //         this.gun.tank.game.endGame();
@@ -86,7 +86,7 @@ class Projectile {
 
     checkCollision() {
         if (this.x > this.game.canvasWidth || this.x < -1000 || this.x > 1000) {
-            return false;
+            return "MISS";
         } else {
             // if (this.game.currentPlayer.id == 2) {
             //     if (
@@ -124,9 +124,9 @@ class Projectile {
                     Math.abs(this.y) <=
                     this.game.currentPlayer.y + this.game.currentPlayer.height
                 ) {
-                    return true;
+                    return "BOOM";
                 } else {
-                    return false;
+                    return "MISS";
                 }
             } else {
                 if (
@@ -138,9 +138,9 @@ class Projectile {
                     Math.abs(this.y) <=
                     this.game.currentPlayer.y + this.game.currentPlayer.height
                 ) {
-                    return true;
+                    return "BOOM";
                 } else {
-                    return false;
+                    return "MISS";
                 }
             }
         }
