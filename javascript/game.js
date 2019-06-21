@@ -106,6 +106,7 @@ var Game = {
         this.img.src = "./images/canon.png";
         this.backgroundImg = new Image();
         this.backgroundImg.src = "./images/paisaje02.jpg";
+        this.playMusic();
         this.img.onload = () => {
             this.backgroundImg.onload = () => {
                 this.start();
@@ -285,5 +286,11 @@ var Game = {
         this.playerTwo.gun.rotateGunUp();
         this.playerTwo.gun.rotateGunDown();
         this.playerTwo.powerLoad();
+    },
+
+    playMusic: function() {
+        var musicGame = new Audio("./sounds/music.mp3");
+        musicGame.volume = 0.2;
+        musicGame.play();
     }
 };
