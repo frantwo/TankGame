@@ -49,6 +49,7 @@ class Projectile {
         );
         this.ctx.fillStyle = "black";
         this.ctx.beginPath();
+
         this.ctx.arc(
             this.x,
             this.y,
@@ -116,25 +117,58 @@ class Projectile {
             //         return false;
             //     }
             // }
+
             if (this.game.currentPlayer.id == 2) {
+                // if (
+                //     this.x >= this.game.currentPlayer.x + this.game.currentPlayer.width &&
+                //     this.x <= this.game.currentPlayer.x &&
+                //     Math.abs(this.y) >= 0 &&
+                //     Math.abs(this.y) <= this.game.currentPlayer.height
+                // ) {
+                //     return "BOOM";
+                // } else {
+                //     return "MISS";
+                // }
+
+                let playerOneSupX =
+                    this.game.canvasWidth - 228 - this.game.currentPlayer.width;
+                let playerOneSupY = -this.game.currentPlayer.base.height;
+                let playerOneInfX =
+                    this.game.canvasWidth - 170 - this.game.currentPlayer.width;
+                let playerOneInfY = 5;
                 if (
-                    this.x >= this.game.currentPlayer.x + this.game.currentPlayer.width &&
-                    this.x <= this.game.currentPlayer.x &&
-                    Math.abs(this.y) >= 0 &&
-                    Math.abs(this.y) <= this.game.currentPlayer.height
+                    this.x > playerOneSupX &&
+                    this.y > playerOneSupY &&
+                    this.x < playerOneInfX &&
+                    this.y < playerOneInfY
                 ) {
                     return "BOOM";
                 } else {
                     return "MISS";
                 }
             } else {
+                // if (
+                //     this.game.canvasWidth - Math.abs(this.x) <=
+                //     this.game.currentPlayer.x + this.game.currentPlayer.width &&
+                //     this.game.canvasWidth - Math.abs(this.x) >=
+                //     this.game.currentPlayer.x &&
+                //     Math.abs(this.y) >= 0 &&
+                //     Math.abs(this.y) <= this.game.currentPlayer.height
+                // ) {
+                //     return "BOOM";
+                // } else {
+                //     return "MISS";
+                // }
+
+                let playerTwoSupX = -1024 + 15; //-15;
+                let playerTwoSupY = -this.game.currentPlayer.base.height / 2;
+                let playerTwoInfX = -1024 + 60; //60;
+                let playerTwoInfY = 5;
                 if (
-                    this.game.canvasWidth - Math.abs(this.x) <=
-                    this.game.currentPlayer.x + this.game.currentPlayer.width &&
-                    this.game.canvasWidth - Math.abs(this.x) >=
-                    this.game.currentPlayer.x &&
-                    Math.abs(this.y) >= 0 &&
-                    Math.abs(this.y) <= this.game.currentPlayer.height
+                    this.x > playerTwoSupX &&
+                    this.y > playerTwoSupY &&
+                    this.x < playerTwoInfX &&
+                    this.y < playerTwoInfY
                 ) {
                     return "BOOM";
                 } else {
