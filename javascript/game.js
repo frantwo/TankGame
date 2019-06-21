@@ -201,22 +201,26 @@ var Game = {
         document.querySelector("#powergun").innerHTML = "Power: 0";
         if (this.currentPlayer.id == 1) {
             document.querySelector("#points_player_A").innerHTML = "FIRE!";
-            document
-                .querySelector("#points_player_A")
-                .classList.replace(".turnOff", ".TurnOn");
+            // document
+            //     .querySelector("#points_player_A")
+            //     .classList.replace(".turnOff", ".TurnOn");
+            document.querySelector("#points_player_A").className = "turnOn";
             document.querySelector("#points_player_B").innerHTML = "PRAY...";
-            document
-                .querySelector("#points_player_B")
-                .classList.replace(".turnOn", ".TurnOff");
+            // document
+            //     .querySelector("#points_player_B")
+            //     .classList.replace(".turnOn", ".TurnOff");
+            document.querySelector("#points_player_B").className = "turnOff";
         } else {
             document.querySelector("#points_player_A").innerHTML = "PRAY...";
-            document
-                .querySelector("#points_player_A")
-                .classList.replace(".turnOn", ".TurnOff");
+            // document
+            //     .querySelector("#points_player_A")
+            //     .classList.replace(".turnOn", ".TurnOff");
+            document.querySelector("#points_player_A").className = "turnOff";
             document.querySelector("#points_player_B").innerHTML = "FIRE!";
-            document
-                .querySelector("#points_player_B")
-                .classList.replace(".turnOff", ".TurnOn");
+            // document
+            //     .querySelector("#points_player_B")
+            //     .classList.replace(".turnOff", ".TurnOn");
+            document.querySelector("#points_player_B").className = "turnOn";
         }
         document.getElementById("wind").style.transform = `rotate(${
       this.windAngle
@@ -251,11 +255,15 @@ var Game = {
 
     changePlayer: function() {
         if (this.currentPlayer.id == this.playerOne.id) {
+            this.playerTwo.gun.powerGun = 0;
+            this.playerTwo.gun.angle = -180;
             this.currentPlayer = this.playerTwo;
         } else {
+            this.playerOne.gun.powerGun = 0;
+            this.playerOne.gun.angle = 0;
             this.currentPlayer = this.playerOne;
         }
-        this.currentPlayer.gun.powerGun += 0;
+
         this.drawScore();
     },
 

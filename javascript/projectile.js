@@ -11,7 +11,6 @@ class Projectile {
         // this.y = this.gun.player.canvasH - this.gun.player.base.height / 2;
         // this.angle = (Math.PI * (90 - angle)) / 180;
         this.timeInAir = 0;
-
         this.windYVelocity =
             Math.sin((this.game.windAngle * Math.PI) / 180) * this.game.windSpeed;
         this.windXVelocity =
@@ -80,6 +79,7 @@ class Projectile {
             this.updateProjectile();
             this.draw();
             this.timeInAir += 1 / 60;
+
             window.requestAnimationFrame(this.bothMovement.bind(this));
         }
     }
@@ -118,11 +118,10 @@ class Projectile {
             // }
             if (this.game.currentPlayer.id == 2) {
                 if (
-                    this.x >= this.game.currentPlayer.x - this.game.currentPlayer.width &&
+                    this.x >= this.game.currentPlayer.x + this.game.currentPlayer.width &&
                     this.x <= this.game.currentPlayer.x &&
                     Math.abs(this.y) >= 0 &&
-                    Math.abs(this.y) <=
-                    this.game.currentPlayer.y + this.game.currentPlayer.height
+                    Math.abs(this.y) <= this.game.currentPlayer.height
                 ) {
                     return "BOOM";
                 } else {
@@ -135,8 +134,7 @@ class Projectile {
                     this.game.canvasWidth - Math.abs(this.x) >=
                     this.game.currentPlayer.x &&
                     Math.abs(this.y) >= 0 &&
-                    Math.abs(this.y) <=
-                    this.game.currentPlayer.y + this.game.currentPlayer.height
+                    Math.abs(this.y) <= this.game.currentPlayer.height
                 ) {
                     return "BOOM";
                 } else {
